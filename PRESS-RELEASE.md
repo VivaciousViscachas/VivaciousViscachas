@@ -16,6 +16,7 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
   > DevMeet
+  >
   > Our goal: making the world a better place one meetup at a time.
   > What inspired DevMeet? There was no one source specifically dedicated to developer meetups.
 
