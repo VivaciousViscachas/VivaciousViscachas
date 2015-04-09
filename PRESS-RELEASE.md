@@ -26,10 +26,10 @@ Once the project moves into development, the press release can be used as a touc
 
   > DevMeet cuts out much of the background noise in other local event apps and only sends you the reminders you specifically set for the events you wish to attend and consolidates the events from multiple sources so you don't have to.
 
-  > 'This product has changed my life. Our goal: making the world a better place one meetup at a time.'
+  > Our goal: making the world a better place one meetup at a time.
 
   > Sign up, enter your zipcode, and start choosing the events you wish to attend!
 
-  > 'DevMeet makes it easy to discover local meetups and doesn't overwhelm me with unneccessary emails and reminders!'
+  > User review: 'DevMeet makes it easy to discover local meetups and doesn't overwhelm me with unneccessary emails and reminders!'
 
   > Check it out. Meet up and get down!
