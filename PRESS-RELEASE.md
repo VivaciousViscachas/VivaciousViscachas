@@ -18,28 +18,27 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > DevMeet
-  > 
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Place to meet your fellow devs!
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > DevMeet allows you to search for local developer meetups that you want to attend and sets up custom notifications to remind you when your saved events are happening.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > There's no one source specifically dedicated to developer meetups.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > DevMeet cuts out much of the background noise in other local event apps and only sends you the reminders you specifically set for the events you wish to attend and consolidates the events from multiple sources so you don't have to.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > 'This product has changed my life. Our goal: making the world a better place one meetup at a time.'
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Sign up, enter your zipcode, and start choosing the events you wish to attend!
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > 'DevMeet makes it easy to discover local meetups and doesn't overwhelm me with unneccessary emails and reminders!'
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Check it out bro. Meet up and get down.
