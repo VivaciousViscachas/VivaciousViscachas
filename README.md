@@ -1,12 +1,12 @@
 # DevMeet
 
-> Meet all the devs.
+> An easy way to meet fellow developers.
 
 ## Team
 
-  - __Product Owner__: Enja
-  - __Scrum Master__: Gerald
-  - __Development Team Members__: Benita, Enja, Gerald, Kayden, Sam
+  - __Product Owner__: [enjareyes](https://github.com/enjareyes)
+  - __Scrum Master__: [gtilma](https://github.com/gtilma)
+  - __Development Team Members__: [benibear](https://github.com/benibear), [enjareyes](https://github.com/enjareyes), [gtilma](https://github.com/gtilma), [sharkySharks](https://github.com/sharkySharks), [samuelfullerthomas](https://github.com/samuelfullerthomas)
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@
 
 ## Usage
 
-> Use it.
+> Create an account, find a meetup, star it, sign up for notifications, and meet up.
 
 ## Requirements
 
