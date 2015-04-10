@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/VivaciousVivachas/VivaciousVivachas",
   "dependencies": {
-    "express": "^4.12.3"
+    "express": "^4.12.3",
+    "mithril": "^0.1.34-beta.0"
   }
 }

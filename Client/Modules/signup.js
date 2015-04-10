@@ -1,3 +1,33 @@
-// model 
-// view 
-// controller
+var Signup = {}
+
+Signup.model = function(){
+  this.firstName =  m.prop('First Name');
+  this.email =  m.prop('Email');
+  this.password =  m.prop('Password');
+};
+
+Signup.controller = function(){
+  var ctrl = this;
+
+  ctrl.signup = m.prop(new Signup.model());
+
+  ctrl.add = function () {
+    var newModel = new Signup.model()
+    //send data to node server
+  }
+};
+
+Signup.view = function(ctrl){
+  return m('fieldset', [
+    m('label', "First name:"),
+    m('input[type=text]', { value: ctrl.signup().firstName(), onchange: m.withAttr('value', ctrl.signup().firstName )}),
+    m('br'),
+    m('label', "Email:"),
+    m('input[type=text]', { value: ctrl.signup().email(), onchange: m.withAttr('value', ctrl.signup().email )}),
+    m('br'),
+    m('label', "Password:"),
+    m('input[type=text]', { value: ctrl.signup().password(), onchange: m.withAttr('value', ctrl.signup().password )}),
+    m('br'),
+    m('a', { onclick: ctrl.add, href:'#' }, 'Sign up!')
+  ])
+};
