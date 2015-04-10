@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/VivaciousVivachas/VivaciousVivachas",
   "dependencies": {
-    "bower": "^1.4.1",
+    "mithril": "^0.1.34-beta.0"
+    "pg": "4.x",
     "express": "^4.12.3"
   }
 }
