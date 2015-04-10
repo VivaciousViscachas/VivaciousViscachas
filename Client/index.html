@@ -1,7 +1,5 @@
 <html>
   <head>
-    <script src="../bower_components/mithril/mithril.min.js"></script>
-    <script src="Modules/signup.js"></script>
     <title>DevMeet</title>
   </head>
 
@@ -15,8 +13,10 @@
     <div id="signin"></div>
     <div id="saved"></div>
 
-    <script>m.module(document.getElementById('signup'), Signup)</script>
-
-
+    <script src="../bower_components/mithril/mithril.min.js"></script>
+    <script src="Modules/signup.js"></script>
+    <script type="text/javascript">
+      m.module(document.getElementById('signup'), Signup)
+    </script>
   </body>
 </html>
