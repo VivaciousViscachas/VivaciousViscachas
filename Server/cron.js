@@ -41,4 +41,3 @@ module.exports.test = request('https://api.meetup.com/2/open_events?&category=34
 
 });
 
-
