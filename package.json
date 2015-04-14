@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/VivaciousVivachas/VivaciousVivachas",
   "dependencies": {
+    "pg": "4.x",
     "express": "^4.12.3"
   }
 }
