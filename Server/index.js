@@ -31,22 +31,17 @@ app.get('/db', function(request, response){
 
 app.listen(process.env.PORT || 5000)
 
-app.post('/signup', auth.signup)
-app.post('/signin', auth.signin)
-// app.get('/', ) //authorize feed vs home feed
-// app.get('/mymeetups', auth.signin)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// app.post('/signup', )
+// app.post('/signin', )
+// app.get('/feed', function(request, response){
+//   pg.connect(databaseUrl, function (err, client, done){
+//     client.query('Select * From Meetups', function (err, result){
+//       if(err){
+//         throw err
+//       } else {
+//         response.send(JSON.stringify(results));
+//       }
+//     })
+//   })
+// });
