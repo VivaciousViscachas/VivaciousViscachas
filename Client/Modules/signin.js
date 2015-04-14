@@ -12,7 +12,7 @@ Signin.controller = function(){
  ctrl.signin = function () {
    return m.request({method:"POST", url:"/signin", data: ctrl.user()}).then(function(token){
       //check database for username/password (auth)
-      localStorage.setItem('session', token)
+      localStorage.setItem('session', token.token)
       m.route('/home')
       }
    }) 

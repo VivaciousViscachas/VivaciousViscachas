@@ -15,6 +15,8 @@ Signup.controller = function(){
     var newModel = new Signup.model()
     return m.request({ method:"POST", url:"/signup", data: signup() }).then(function(token){ 
       //send data to node server
+      
+
       localStorage.setItem('session', token)
       m.route('/home')
     })
