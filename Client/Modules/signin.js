@@ -10,12 +10,12 @@ Signin.controller = function(){
  ctrl.user = m.prop(new Signin.model());
 
  ctrl.signin = function () {
-   return m.request({method:"POST", url:"/signin", data: ctrl.user()}).then(function(token){})
-   //post request to data base
-   //return token
-   //setItm (token) to local storage?
-
- }
+   return m.request({method:"POST", url:"/signin", data: ctrl.user()}).then(function(token){
+      //check database for username/password (auth)
+      localStorage.setItem('session', token.token)
+      m.route('/home')
+      }
+   }) 
 };
 
 Signin.view = function(ctrl){

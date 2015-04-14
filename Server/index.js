@@ -16,7 +16,7 @@ app.get('/db', function(request, response){
         throw err;
       } else { 
         response.send(JSON.stringify(result.rows));
-      }
+      };
     })
   })
 });
