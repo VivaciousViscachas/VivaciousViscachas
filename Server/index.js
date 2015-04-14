@@ -4,7 +4,10 @@ var pg = require('pg');
 
 app.use(express.static(__dirname + '/../Client'));
 
-var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
+
+//Access heroku-hosted db from terminal using: heroku pg:psql
+
+var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet';
 
 app.get('/db', function(request, response){
   pg.connect(databaseUrl, function(err, client, done){

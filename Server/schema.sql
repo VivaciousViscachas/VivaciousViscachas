@@ -1,27 +1,3 @@
-
--- create database DevMeets
--- use DevMeets
-
-  -- create table users
-    -- id  (PRIMARYKEY) (integer)
-    -- first name (varchar 50)
-    -- email (varchar 50)
-    -- password (varchar 50)
-
-
-  -- create table saved-starred 
-    -- user id (integer) FOREIGN KEY
-    -- meetup id (integer) FOREIGN KEY
-
-
-  -- create table austin meetups
-    -- id (PRIMARY KEY)
-    -- date 
-    -- time
-    -- location
-    -- title
-    -- description
-
 CREATE DATABASE DevMeet;
 
 Use DevMeet;
@@ -36,10 +12,21 @@ CREATE TABLE users(
 
 CREATE TABLE meetups(
         id SERIAL
-    ,   name VARCHAR(30)
-    ,   description VARCHAR(500)
-    ,   start_time TIMESTAMP
-    ,   end_time TIMESTAMP
+    ,   api_event_id INT
+    ,   event_name VARCHAR(30)
+    ,   event_description VARCHAR(500)
+    ,   event_url VARCHAR(100)
+    ,   event_time TIMESTAMP
+    ,   event_duration INT
+    ,   venue_address VARCHAR(100)
+    ,   venue_city VARCHAR(40)
+    ,   venue_state VARCHAR(5)
+    ,   venue_longitude INT
+    ,   venue_latitude INT
+    ,   group_name VARCHAR(40)
+    ,   group_urlname VARCHAR(50)
+    ,   group_how_to_find VARCHAR(100)
+    ,   api_group_id INT
     ,   PRIMARY KEY (id)
 );
 
