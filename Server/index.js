@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
+var auth = reqiure('/users/auth.js');
 
 app.use(express.static(__dirname + '/../Client'));
 
@@ -22,5 +23,5 @@ app.get('/db', function(request, response){
 app.listen(process.env.PORT || 5000)
 
 
-// app.post('/signup', )
-// app.post('/signin', )
+app.post('/signup', auth.signup)
+app.post('/signin', auth.signin)
