@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "postinstall": "bower cache clean && install"
+=======
+    "postinstall": "bower install"
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> a3b008f58969c07d56ae12e699851beb3286f90b
   },
   "repository": {
     "type": "git",
