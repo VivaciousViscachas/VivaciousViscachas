@@ -13,9 +13,9 @@ Signup.controller = function(){
 
   ctrl.add = function () {
     var newModel = new Signup.model()
-    // return m.request({ method:"POST", url:"/signup", data: ctrl.signup() }).then(function(token){ // ctrl.signup() or just signup() ??
-    //   //send data to node server
-    // })
+    return m.request({ method:"POST", url:"/signup", data: ctrl.signup() }).then(function(token){ // ctrl.signup() or just signup() ??
+      //send data to node server
+    })
   }
 };
 
