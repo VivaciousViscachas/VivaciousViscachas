@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
-var auth = reqiure('/users/auth.js');
+var auth = require('/users/auth.js');
+var api = require('./Server/cron.js');
 
 app.use(express.static(__dirname + '/../Client'));
 
@@ -12,12 +13,17 @@ app.get('/db', function(request, response){
     client.query('Select * From Users', function(err, result){
       done();
       if(err){
-        throw err
+        throw err;
       } else { 
         response.send(JSON.stringify(result.rows));
-      };
+      }
     })
   })
+});
+
+// testing api functionality
+app.get('/test-api-insert', function(request, response){
+  api.test();
 });
 
 app.listen(process.env.PORT || 5000)
