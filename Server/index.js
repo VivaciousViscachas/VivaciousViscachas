@@ -33,8 +33,8 @@ app.listen(process.env.PORT || 5000)
 
 app.post('/signup', auth.signup)
 app.post('/signin', auth.signin)
-// app.get('/', )
-// app.get('/mymeetups', )
+// app.get('/', ) //authorize feed vs home feed
+// app.get('/mymeetups', auth.signin)
 
 
 

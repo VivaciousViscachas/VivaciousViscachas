@@ -12,10 +12,11 @@ Signup.controller = function(){
   ctrl.signup = m.prop(new Signup.model());
 
   ctrl.add = function () {
-    var newModel = new Signup.model()
-    return m.request({ method:"POST", url:"/signup", data: signup() }).then(function(token){ 
+    // var newModel = new Signup.model()
+    return m.request({ method:"POST", url:"/#/signup", data: signup() }).then(function(token){ 
       //send data to node server
-
+      // console.log(localStorage.getItem('session'))
+      // console.log('inside signup')
       localStorage.setItem('session', token)
       m.route('/')
     })
