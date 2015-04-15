@@ -1,8 +1,10 @@
 var request = require('request');
-var db = require('knex')({
-  client: 'pg',
-  connection: process.env.DATABASE_URL
-});
+var pg = require('pg');
+var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet';
+// var db = require('knex')({
+//   client: 'pg',
+//   connection: 'postgres://localhost/devmeet'
+// });
 
 // var options = {
 //  method: 'GET'
@@ -17,28 +19,22 @@ module.exports.test = function () {
         console.error('error:', error);
       }
 
-      var meetup = body.results[0];
+      var data = JSON.parse(body).results;
 
-      db.insert({
-        api_event_id: meetup.id,
-        event_name: meetup.name,
-        event_description: meetup.description,
-        event_url: meetup.id,
-        event_time: meetup.time,
-        event_duration: meetup.duration,
-        venue_address: meetup.venue.address_1,
-        venue_city: meetup.venue.city,
-        venue_state: meetup.venue.state,
-        venue_longitude: meetup.venue.lon,
-        venue_latitude: meetup.venue.lat,
-        group_name: meetup.group.name,
-        group_urlname: meetup.group.urlname,
-        group_how_to_find: meetup.how_to_find_us,
-        api_group_id: meetup.group.id
-      }, 'id')
-      .into('meetups');
+      if (!data) console.error("error!")
 
-      response.send(body.results);
+      var meetup = data[0];
+
+      pg.connect(databaseUrl, function (err, client, done) {
+        client.query('INSERT INTO meetups (api_event_id, event_name, event_description, event_url, event_time, event_duration, venue_address, venue_city, venue_state, venue_lat_lon, group_name, group_urlname, group_how_to_find, api_group_id) VALUES ($1, $2, $3, $4, to_timestamp($5), to_timestamp($6), $7, $8, $9, POINT($10,$11), $12, $13, $14, $15);', [meetup.id, meetup.name, meetup.description, meetup.event_url, meetup.time, meetup.duration, meetup.venue.address_1, meetup.venue.city, meetup.venue.state, meetup.venue.lat, meetup.venue.lon, meetup.group.name, meetup.group.urlname, meetup.how_to_find_us, meetup.group.id], function (err, result) {
+            done();
+            if (err) {
+              throw err;
+            } else {
+              console.log('Row(s) inserted!');
+            }
+        })
+      });
   })
 };
 
