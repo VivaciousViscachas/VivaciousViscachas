@@ -15,16 +15,15 @@ module.exports= {
     pg.connect(databaseUrl, function(err, client, done){
       client.query('SELECT firstName FROM users WHERE email=' + email, function(err, result){ //check DB for email
         done();
-        if(err){ //if doesn't exist in DB
-          //add user to DB
+        if(err){ //if doesn't exist in DB add user to DB
           var hash = bcrypt.hashSync(password, salt); 
           client.query('INSERT INTO users (first_name, email, password) VALUES ($1, $2, $3)',[firstName, email, hash], function(){ 
-            var token = jwt.encode(userObj, 'secret') //create the token
-            response.send({token: token}) //res.json or res.send?
-          }
+            var token = jwt.encode(userObj, 'secret') 
+            response.send({token: token}) //res.json or res.send?    //send user token
+          })
         } else { 
           console.log('user already exists')
-        };
+        }
       })
     })
   },
@@ -37,11 +36,11 @@ module.exports= {
     pg.connect(databaseUrl, function(err, client, done){
       client.query('SELECT password FROM users WHERE email=' + email, function(err, result){
         done();
-        if (err) console.log ('user does not exist')//user does not exist
+        if (err) console.log ('user does not exist')
         else {
           bcrypt.compare(password, result, function(err, same) {
             if (same){
-              var token = jwt.encode(userObj, 'secret') //create the token
+              var token = jwt.encode(userObj, 'secret') 
               response.send({token: token}) //res.json or res.send?
             }
           });
