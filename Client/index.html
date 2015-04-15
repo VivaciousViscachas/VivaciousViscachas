@@ -9,17 +9,29 @@
       <h1>HELLO WORLD!</h1>
     </div>
 
-    <div id="signup"></div>
-    <div id="signin"></div>
-    <div id="saved"></div>
-    <div id="feed"></div>
+    <div id='theView'>
+      <!-- <div id="signup"></div>
+      <div id="signin"></div>
+      <div id="saved"></div>
+      <div id="feed"></div> -->
+    </div>
 
     <script src="vendor/mithril.js"></script>
     <script src="Modules/signup.js"></script>
+    <script src="Modules/signin.js"></script>
     <script src="Modules/feed.js"></script>
+    <script src="Modules/profile.js"></script>
     <script type="text/javascript">
-      m.module(document.getElementById('signup'), Signup);
-      m.module(document.getElementById('feed'), feed);
+      // m.module(document.getElementById('signup'), Signup);
+      // m.module(document.getElementById('feed'), feed);
+      m.route.mode = 'hash'
+      m.route(document.getElementById('theView'), '/', {
+        '/': feed, 
+        '/signup': Signup,
+        '/signin': Signin,
+        '/mymeetups': profile
+      })
+
     </script>
   </body>
 </html>

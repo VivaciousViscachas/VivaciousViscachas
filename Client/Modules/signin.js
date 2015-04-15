@@ -9,13 +9,13 @@ Signin.controller = function(){
  var ctrl = this;
  ctrl.user = m.prop(new Signin.model());
 
- ctrl.signin = function () {
-   return m.request({method:"POST", url:"/signin", data: ctrl.user()}).then(function(token){
-      //check database for username/password (auth)
-      localStorage.setItem('session', token.token)
-      m.route('/home')
-      }
-   }) 
+   ctrl.signin = function(){
+      return m.request({method:"POST", url:"/signin", data: ctrl.user()}).then(function(token){
+         //check database for username/password (auth)
+         localStorage.setItem('session', token.token)
+         m.route('/')
+      })
+   }
 };
 
 Signin.view = function(ctrl){
@@ -28,4 +28,6 @@ Signin.view = function(ctrl){
    m('br'),
    m('a', { onclick: ctrl.signin, href:'#' }, 'Sign in!')
  ])
+
+
 };

@@ -17,7 +17,7 @@ Signup.controller = function(){
       //send data to node server
 
       localStorage.setItem('session', token)
-      m.route('/home')
+      m.route('/')
     })
   }
 };
