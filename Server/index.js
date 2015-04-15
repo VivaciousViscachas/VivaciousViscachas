@@ -26,10 +26,10 @@ app.get('/db', function(request, response){
   })
 });
 
-// testing api functionality
-// app.get('/test-api-insert', function(request, response){
-//   api.test();
-// });
+// testing api functionality (check DB for success)
+app.get('/test-api-insert', function(request, response){
+  api.test();
+});
 
 app.listen(process.env.PORT || 5000)
 console.log('Server listening on port ' + 5000)
