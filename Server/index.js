@@ -31,7 +31,22 @@ app.get('/db', function(request, response){
 
 app.listen(process.env.PORT || 5000)
 
-
 app.post('/signup', auth.signup)
 app.post('/signin', auth.signin)
-// app.post('/home', )
+// app.get('/', )
+// app.get('/mymeetups', )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
