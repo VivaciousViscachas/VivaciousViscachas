@@ -33,16 +33,36 @@ module.exports= {
     var email = request.body.email
     var password = request.body.password
     var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
-    var databasePassword;
 
     pg.connect(databaseUrl, function(err, client, done){
-      client.query('')
+      client.query('SELECT password FROM users WHERE email=' + email, function(err, result){
+        done();
+        if (err) console.log ('user does not exist')//user does not exist
+        else {
+          bcrypt.compare(password, result, function(err, same) {
+            if (same){
+              var token = jwt.encode(userObj, 'secret') //create the token
+              response.send({token: token}) //res.json or res.send?
+            }
+          });
+        }
+      })
     }
-
-
-
-    bcrypt.compare(password, this.get('password'), function(err, same) {
-      cb(same)
-    });
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
