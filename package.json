@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/VivaciousVivachas/VivaciousVivachas",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "cron": "^1.0.9",
     "express": "^4.12.3",
+    "jwt-simple": "^0.3.0",
     "knex": "^0.7.6",
+    "pg": "^4.3.0",
     "request": "^2.55.0"
   }
 }

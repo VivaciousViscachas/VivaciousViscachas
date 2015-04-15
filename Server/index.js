@@ -22,9 +22,9 @@ app.get('/db', function(request, response){
 });
 
 // testing api functionality
-app.get('/test-api-insert', function(request, response){
-  api.test();
-});
+// app.get('/test-api-insert', function(request, response){
+//   api.test();
+// });
 
 app.listen(process.env.PORT || 5000)
 
