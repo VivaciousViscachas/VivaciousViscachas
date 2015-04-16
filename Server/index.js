@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var pg = require('pg');
-var auth = require('/auth.js');
+var auth = require('./users/auth.js');
+var api=require('./cron.js');
 
 app.use(express.static(__dirname + '/../Client'));
 

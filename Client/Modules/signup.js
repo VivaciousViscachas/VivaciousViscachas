@@ -24,22 +24,26 @@ Signup.controller = function(){
 Signup.view = function(ctrl){
   return m('div', [
     m('form', [
-      m('div.form-group',[
+      m('div.form-group.col-md-6.col-md-offset-3',[
         m('label', "First name:"),
         m('input[type=text].form-control', { value: ctrl.signup().firstName(), onchange: m.withAttr('value', ctrl.signup().firstName )})
       ]),
-      m('div.form-group',[
+      m('div.form-group.col-md-6.col-md-offset-3',[
         m('label', "Email:"),
         m('input[type=text].form-control', { value: ctrl.signup().email(), onchange: m.withAttr('value', ctrl.signup().email )})
       ]),
-      m('div.form-group',[
+      m('div.form-group.col-md-6.col-md-offset-3',[
         m('label', "Password:"),
-        m('input[type=password].form-control', { value: ctrl.signup().password(), onchange: m.withAttr('value', ctrl.signup().password )})
-      ]),
-      m('a', { onclick: ctrl.add, href:'#' }, 'Sign up!')
+        m('input[type=password].form-control', { value: ctrl.signup().password(), onchange: m.withAttr('value', ctrl.signup().password )}),
+        m('br'),
+        m('a[href=#].btn.btn-default', { onclick: ctrl.add }, 'Sign up!')
+      ])
     ]),
-    m('p', 'Already a member?'),
-    m('a[href=#/signin].btn.btn-default','Sign In!')
+
+    m('div.col-md-6.col-md-offset-3',[
+      m('span', 'Already a member?  '),
+      m('a[href=#/signin]','Sign In!') 
+    ])
   ])
 };
 

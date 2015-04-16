@@ -21,19 +21,23 @@ Signin.controller = function(){
 };
 
 Signin.view = function(ctrl){
-   return m('div',[
+   return m('div.container',[
       m('form', [
-         m('div.form-group',[ 
+         m('div.form-group.col-md-6.col-md-offset-3',[ 
             m('label', "Email:"),
             m('input[type=text].form-control', { value: ctrl.user().email(), onchange: m.withAttr('value', ctrl.user().email)})
          ]),
-         m('div.form-group',[ 
+         m('div.form-group.col-md-6.col-md-offset-3',[ 
             m('label', "Password:"),
-            m('input[type=password].form-control', { value: ctrl.user().password(), onchange: m.withAttr('value', ctrl.user().password)})  
-         ]),
-         m('a', { onclick: ctrl.signin, href:'#' }, 'Sign in!')
+            m('input[type=password].form-control', { value: ctrl.user().password(), onchange: m.withAttr('value', ctrl.user().password)}), 
+            m('br'),
+            m('a[href=#].btn.btn-default', { onclick: ctrl.signin }, 'Sign in!')
+         ])
       ]),
-      m('p', 'Not a member yet?'),
-      m('a[href=#/signup].btn.btn-default','Sign Up!')
+
+      m('div.col-md-6.col-md-offset-3',[
+         m('span', 'Not a member yet?  '),
+         m('a[href=#/signup]','Sign Up!')
+      ])
    ])
 };
