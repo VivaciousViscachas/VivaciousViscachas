@@ -60,17 +60,3 @@ app.get('/feed', function(request, response){
 });
 app.get('/mymeetups', auth.profile)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
