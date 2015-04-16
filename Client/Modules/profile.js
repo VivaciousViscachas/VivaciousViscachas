@@ -6,7 +6,17 @@ profile.model = function(userObj){
 };
 
 profile.controller = function(){
-  var ctrl = this;
+  var ctrl = this,
+  ctrl.meetupList;
+
+  ctrl.getMeetups = function () {
+   return m.request({method:"GET", url:"/feed"}).then(function(result){
+    // localStorage.setItem('meetups', JSON.stringify(result))
+    ctrl.meetupList = result;
+   })
+  }
+
+  ctrl.getMeetups();
 };
 
 profile.view = function(ctrl){
