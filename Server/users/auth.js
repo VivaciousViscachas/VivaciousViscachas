@@ -43,7 +43,7 @@ module.exports= {
             if (same){
               localStorage.setItem('email', email)
               var token = jwt.encode(userObj, 'secret') 
-              response.send({token: token}) //res.json or res.send?
+              response.send({token: token}) 
             }
           });
         }
@@ -64,7 +64,7 @@ module.exports= {
           done();
           if (err) console.log('error in profile in auth.js')
           else {
-            response.send(result) //return array of objects to the profile page res.send(arrayofobjects)
+            response.send(result) //return array of objects to the profile page 
           }
         })
       })
