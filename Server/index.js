@@ -13,7 +13,7 @@ var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet';
 
 app.get('/db', function(request, response){
   pg.connect(databaseUrl, function(err, client, done){
-    client.query('Select * From Users', function(err, result){
+    client.query('Select * From meetups', function(err, result){
       done();
       if(err){
         throw err;
@@ -24,7 +24,7 @@ app.get('/db', function(request, response){
   })
 });
 
-// testing api functionality (check DB for success)
+// testing api functionality (check /db for success)
 app.get('/test-api-insert', function(request, response){
   api.test();
 });
