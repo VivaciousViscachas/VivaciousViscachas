@@ -6,26 +6,28 @@ profile.model = function(userObj){
 };
 
 profile.controller = function(){
-  var ctrl = this,
+  var ctrl = this;
   ctrl.meetupList;
+  ctrl.email = localStorage.getItem('email')
 
   ctrl.getMeetups = function () {
-   return m.request({method:"GET", url:"/feed"}).then(function(result){
-    // localStorage.setItem('meetups', JSON.stringify(result))
-    ctrl.meetupList = result;
-   })
+    return m.request({method:"POST", url:"/mymeetups", data: ctrl.email}).then(function(result){
+      // localStorage.setItem('meetups', JSON.stringify(result))
+      ctrl.meetupList = result;
+    })
   }
 
   ctrl.getMeetups();
 };
 
 profile.view = function(ctrl){
+  var meetupList = ctrl.meetupList;
 
-  return m('h3', "Hello" ), // access / show the users first name.
+  return m('h2', "Hello!" ), // access / show the users first name.
 
   m('div.queue', [ //div witht the class '.queue'
     m("ul", [
-        m("li", SOMETHING.map(function(meetup){
+        m("li", meetupList.map(function(meetup){
           return 'hi'//
           //map the users saved meetups 
             //goal: set up list items by time 

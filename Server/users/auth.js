@@ -18,6 +18,7 @@ module.exports= {
         if(err){ //if doesn't exist in DB add user to DB
           var hash = bcrypt.hashSync(password, salt); 
           client.query('INSERT INTO users (first_name, email, password) VALUES ($1, $2, $3)',[firstName, email, hash], function(){ 
+            localStorage.setItem('email', email)
             var token = jwt.encode(userObj, 'secret') 
             response.send({token: token}) //res.json or res.send?    //send user token
           })
@@ -40,22 +41,36 @@ module.exports= {
         else {
           bcrypt.compare(password, result, function(err, same) {
             if (same){
+              localStorage.setItem('email', email)
               var token = jwt.encode(userObj, 'secret') 
-              response.send({token: token}) //res.json or res.send?
+              response.send({token: token}) 
             }
           });
         }
       })
     })
+  },
+
+  profile: function(request, response){
+    var email = request.body;
+    var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
+
+    if (email){ 
+      pg.connect(databaseUrl, function(err, client, done){
+        client.query('', function(err, result){
+            //query database users table using email to access user_id
+            //JOIN starred table using user_id to access meetup_id
+            //JOIN meetups table with meetup_id's to access meetups (array of objects)
+          done();
+          if (err) console.log('error in profile in auth.js')
+          else {
+            response.send(result) //return array of objects to the profile page 
+          }
+        })
+      })
+    }
   }
 }
-
-
-
-
-
-
-
 
 
 
