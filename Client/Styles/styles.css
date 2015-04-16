@@ -1,4 +1,8 @@
+table{
+	margin-right: 20%;
+	margin-left: 20%;
+}
 
-.signUpIn {
-  
+td, th {
+	border: 2px solid;
 }

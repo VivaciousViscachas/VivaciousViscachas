@@ -1,15 +1,5 @@
 var feed = {}
 
-//test data
-var data = {
-"results": [
-{"name" : "the austin linux meetup",
-"members" : 11000
-},
-{"name" : "the austin javascript meetup",
-"members" : 1223123
-}]
-}
 
 feed.model = function (item) {
 	this.name = item.name;
@@ -18,10 +8,10 @@ feed.model = function (item) {
 };
 
 //builds the feed list based off the database query
-feed.list = function(array){
+feed.list = function(obj){
 	var list = [];
-	for (var i = 0; i < array.results.length; i++){
-		var temp = new feed.model(array.results[i]);
+	for (var i = 0; i < obj.results.length; i++){
+		var temp = new feed.model(obj.results[i]);
 		list.push(temp);
 	}
 	return list;
@@ -29,15 +19,22 @@ feed.list = function(array){
 
 feed.controller = function () {
   mctrl = this;
-  mctrl.listOfItems = feed.list(data);
+  mctrl.listOfItems = feed.list;
+  //gets the meetups from the DB and then stores them in localStorage
+  mctrl.getMeetups = function () {
+   return m.request({method:"GET", url:"/feed"}).then(function(result){
+    localStorage.setItem('meetups', JSON.stringify(result))
+   })
+  }
+  mctrl.getMeetups();
 }
 
 feed.view = function (ctrl) {
   return m('div', [
-    mctrl.listOfItems.map((function(meetup){
-         return m('table', [
-            m('tr', [
-              m('td', meetup.name), m('td', meetup.members)
+    mctrl.listOfItems(JSON.parse(localStorage.getItem('meetups'))).map((function(meetup){
+         return m('ul', [
+            m('li', [
+              m('div', meetup.name), m('div', meetup.members)
             ])
           ])
     }))
