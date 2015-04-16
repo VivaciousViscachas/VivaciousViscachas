@@ -21,17 +21,19 @@ Signin.controller = function(){
 };
 
 Signin.view = function(ctrl){
- return m('form', [
-   m('div.form-group',[ 
-      m('label', "Email:"),
-      m('input[type=text]', { value: ctrl.user().email(), onchange: m.withAttr('value', ctrl.user().email)})
-   ]),
-   m('div.form-group'[ 
-      m('label', "Password:"),
-      m('input[type=password]', { value: ctrl.user().password(), onchange: m.withAttr('value', ctrl.user().password)})  
-   ]),
-   m('a', { onclick: ctrl.signin, href:'#' }, 'Sign in!'),
-   m('p', 'Not a member yet?'),
-   m('a[href=#/signup]','Sign Up!')
- ])
+   return m('div',[
+      m('form', [
+         m('div.form-group',[ 
+            m('label', "Email:"),
+            m('input[type=text].form-control', { value: ctrl.user().email(), onchange: m.withAttr('value', ctrl.user().email)})
+         ]),
+         m('div.form-group',[ 
+            m('label', "Password:"),
+            m('input[type=password].form-control', { value: ctrl.user().password(), onchange: m.withAttr('value', ctrl.user().password)})  
+         ]),
+         m('a', { onclick: ctrl.signin, href:'#' }, 'Sign in!')
+      ]),
+      m('p', 'Not a member yet?'),
+      m('a[href=#/signup].btn.btn-default','Sign Up!')
+   ])
 };
