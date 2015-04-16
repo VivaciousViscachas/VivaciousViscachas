@@ -13,7 +13,7 @@ CREATE TABLE users(
 
 CREATE TABLE meetups(
         id SERIAL
-    ,   api_event_id INT
+    ,   api_event_id VARCHAR(50)
     ,   event_name VARCHAR(100)
     ,   event_description VARCHAR(3000)
     ,   event_url VARCHAR(100)
@@ -27,7 +27,7 @@ CREATE TABLE meetups(
     ,   group_name VARCHAR(50)
     ,   group_urlname VARCHAR(50)
     ,   group_how_to_find VARCHAR(100)
-    ,   api_group_id INT
+    ,   api_group_id VARCHAR(50)
     ,   PRIMARY KEY (id)
 );
 

@@ -23,6 +23,7 @@
     "jwt-simple": "^0.3.0",
     "knex": "^0.7.6",
     "pg": "^4.3.0",
-    "request": "^2.55.0"
+    "request": "^2.55.0",
+    "request-promise": "^0.4.2"
   }
 }
