@@ -34,16 +34,18 @@
       if (localStorage.getItem("session")){
         m.route(document.getElementById('theView'), '/', {
          '/': feed, 
+         '/mymeetups': profile,
          '/signup': Signup,
          '/signin': Signin,
-         '/mymeetups': profile
+         '/feed': feed
         })
-      }else{
+      } else {
         m.route(document.getElementById('theView'), '/', {
          '/': feed, 
+         '/mymeetups': Signin,
          '/signup': Signup,
          '/signin': Signin,
-         '/mymeetups': Signin
+         '/feed': feed
         })
       }
 
