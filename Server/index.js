@@ -23,7 +23,11 @@ app.get('/db', function(request, response){
   })
 });
 
+<<<<<<< HEAD
 // testing api functionality (check /db for success)
+=======
+// testing api functionality (check DB for success)
+>>>>>>> 647cec452360e6227b4ee1d40bf170a69526310a
 app.get('/test-api-insert', function(request, response){
   api.test();
 });

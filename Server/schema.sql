@@ -15,11 +15,18 @@ CREATE TABLE meetups(
         id SERIAL
     ,   api_event_id INT
     ,   event_name VARCHAR(100)
+<<<<<<< HEAD
     ,   event_description VARCHAR(3000)
     ,   event_url VARCHAR(100)
     ,   event_time BIGINT
     ,   event_updated BIGINT
     ,   event_duration BIGINT
+=======
+    ,   event_description VARCHAR(500)
+    ,   event_url VARCHAR(100)
+    ,   event_time TIMESTAMP WITH TIME ZONE
+    ,   event_duration TIMESTAMP WITH TIME ZONE
+>>>>>>> 647cec452360e6227b4ee1d40bf170a69526310a
     ,   venue_address VARCHAR(100)
     ,   venue_city VARCHAR(40)
     ,   venue_state VARCHAR(5)
