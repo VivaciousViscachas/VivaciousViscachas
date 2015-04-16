@@ -12,10 +12,8 @@ Signup.controller = function(){
   ctrl.signup = m.prop(new Signup.model());
 
   ctrl.add = function () {
-    // var newModel = new Signup.model()
     return m.request({ method:"POST", url:"/#/signup", data: signup() }).then(function(token){ 
       //send data to node server
-      // console.log(localStorage.getItem('session'))
       // console.log('inside signup')
       localStorage.setItem('session', token)
       m.route('/')
@@ -34,6 +32,9 @@ Signup.view = function(ctrl){
     m('label', "Password:"),
     m('input[type=text]', { value: ctrl.signup().password(), onchange: m.withAttr('value', ctrl.signup().password )}),
     m('br'),
-    m('a', { onclick: ctrl.add, href:'#' }, 'Sign up!')
+    m('a', { onclick: ctrl.add, href:'#' }, 'Sign up!'),
+    m('br'),
+    m('p', 'Already a member?'),
+    m('a[href=#/signin]','Sign In!')
   ])
 };

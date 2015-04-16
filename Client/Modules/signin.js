@@ -28,7 +28,10 @@ Signin.view = function(ctrl){
    m('label', "Password:"),
    m('input[type=text]', { value: ctrl.user().password(), onchange: m.withAttr('value', ctrl.user().password)}),
    m('br'),
-   m('a', { onclick: ctrl.signin, href:'#' }, 'Sign in!')
+   m('a', { onclick: ctrl.signin, href:'#' }, 'Sign in!'),
+   m('br'),
+   m('p', 'Not a member yet?'),
+   m('a[href=#/signup]','Sign Up!')
  ])
 
 

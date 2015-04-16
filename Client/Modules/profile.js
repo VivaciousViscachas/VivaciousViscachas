@@ -11,28 +11,17 @@ profile.controller = function(){
 
 profile.view = function(ctrl){
 
-  // return m('h3', "Hello" ), // access / show the users first name.
+  return m('h3', "Hello" ), // access / show the users first name.
 
-  // m('div.queue', [ //div witht the class '.queue'
-  //   m("ul", [
-  //       m("li", SOMETHING.map(function(meetup){
-  //         return 'hi'//
-  //         //map the users saved meetups 
-  //           //goal: set up list items by time 
-  //       }) 
-  //   ]) 
-  // ], 'My Meetups')
-
-  return m('div', [
-    mctrl.listOfItems.map((function(meetup){
-         return m('table', [
-            m('tr', [
-              m('td', meetup.name), m('td', meetup.members)
-            ])
-          ])
-    }))
-  ])
-
+  m('div.queue', [ //div witht the class '.queue'
+    m("ul", [
+        m("li", SOMETHING.map(function(meetup){
+          return 'hi'//
+          //map the users saved meetups 
+            //goal: set up list items by time 
+        })) 
+    ]) 
+  ], 'My Meetups')
 };
 
 

@@ -25,12 +25,22 @@
       // m.module(document.getElementById('signup'), Signup);
       // m.module(document.getElementById('feed'), feed);
       m.route.mode = 'hash'
-      m.route(document.getElementById('theView'), '/', {
-        '/': feed, 
-        '/signup': Signup,
-        '/signin': Signin,
-        '/mymeetups': profile
-      })
+
+      if (localStorage.getItem("session")){
+        m.route(document.getElementById('theView'), '/', {
+         '/': feed, 
+         '/signup': Signup,
+         '/signin': Signin,
+         '/mymeetups': profile
+        })
+      }else{
+        m.route(document.getElementById('theView'), '/', {
+         '/': Signin, 
+         '/signup': Signup,
+         '/signin': Signin,
+         '/mymeetups': Signin
+        })
+      }
 
     </script>
   </body>
