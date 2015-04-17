@@ -9,11 +9,11 @@ feed.model = function (item) {
 
 //builds the feed list based off the database query
 feed.list = function(obj){
-	var list = [];
-	for (var i = 0; i < obj.results.length; i++){
-		var temp = new feed.model(obj.results[i]);
-		list.push(temp);
-	}
+	var list = obj;
+	// for (var i = 0; i < obj.length; i++){
+	// 	var temp = new feed.model(obj[i]);
+	// 	list.push(temp);
+	// }
 	return list;
 }
 

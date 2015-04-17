@@ -3,8 +3,10 @@ var app = express();
 var pg = require('pg');
 var auth = require('./users/auth.js');
 var api=require('./cron.js');
+var bodyParser = require('body-parser')
 
 app.use(express.static(__dirname + '/../Client'));
+app.use(bodyParser.json())
 
 
 //Access heroku-hosted db from terminal using: heroku pg:psql
@@ -45,16 +47,15 @@ app.get('/feed', function(request, response){
   //     }
   //   })
   // })
-    var data = {
-      "results": [
-        {"name" : "the austin linux meetup",
-          "members" : 11000
-        },
-        {"name" : "the austin javascript meetup",
-        "members" : 1223123
-        }
-      ]
-    }
+    var data =  [
+      {"name" : "the austin linux meetup",
+        "members" : 11000
+      },
+      {"name" : "the austin javascript meetup",
+      "members" : 1223123
+      }
+    ]
+
     response.end(JSON.stringify(data));
 });
 app.get('/mymeetups', auth.profile)

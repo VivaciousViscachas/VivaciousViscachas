@@ -1,9 +1,9 @@
 var Signup = {}
 
 Signup.model = function(){
-  this.firstName =  m.prop('');
-  this.email =  m.prop('');
-  this.password =  m.prop('');
+  this.firstName =  m.prop("");
+  this.email =  m.prop("");
+  this.password =  m.prop("");
 };
 
 Signup.controller = function(){
@@ -12,9 +12,9 @@ Signup.controller = function(){
   ctrl.signup = m.prop(new Signup.model());
 
   ctrl.add = function () {
-    return m.request({ method:"POST", url:"/#/signup", data: signup() }).then(function(token){ 
-      //send data to node server
-      // console.log('inside signup')
+    return m.request({ method:"POST", url:"/signup", data:ctrl.signup() }).then(function(token){ 
+      console.log('inside signup');
+      console.log(token);
       localStorage.setItem('session', token)
       m.route('/')
     })
