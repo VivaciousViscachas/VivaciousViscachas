@@ -1,9 +1,9 @@
 var Signup = {}
 
 Signup.model = function(){
-  this.firstName =  m.prop('');
-  this.email =  m.prop('');
-  this.password =  m.prop('');
+  this.firstName =  m.prop("");
+  this.email =  m.prop("");
+  this.password =  m.prop("");
 };
 
 Signup.controller = function(){
@@ -12,10 +12,10 @@ Signup.controller = function(){
   ctrl.signup = m.prop(new Signup.model());
 
   ctrl.add = function () {
-    return m.request({ method:"POST", url:"/#/signup", data: ctrl.signup() }).then(function(token){  //getting meetup data
-      console.log('inside signup. token:',token);
-      localStorage.setItem('session', token)
-      m.route('/#/')
+    return m.request({ method:"POST", url:"/signup", data:ctrl.signup() }).then(function(token){ 
+      console.log('inside signup');
+      localStorage.setItem('session', token.request)
+      m.route('/')
     })
   }
 };

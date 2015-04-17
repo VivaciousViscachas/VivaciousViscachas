@@ -45,16 +45,15 @@ app.get('/feed', function(request, response){
   //     }
   //   })
   // })
-    var data = {
-      "results": [
-        {"name" : "the austin linux meetup",
-          "members" : 11000
-        },
-        {"name" : "the austin javascript meetup",
-        "members" : 1223123
-        }
-      ]
-    }
+    var data =  [
+      {"name" : "the austin linux meetup",
+        "members" : 11000
+      },
+      {"name" : "the austin javascript meetup",
+      "members" : 1223123
+      }
+    ]
+
     response.end(JSON.stringify(data));
 });
 app.get('/mymeetups', auth.profile)
