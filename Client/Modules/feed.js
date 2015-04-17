@@ -4,7 +4,7 @@ var feed = {}
 feed.model = function (item) {
 	this.name = item.name;
 	this.members = item.members;
-
+  
 };
 
 //builds the feed list based off the database query

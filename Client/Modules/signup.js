@@ -12,11 +12,10 @@ Signup.controller = function(){
   ctrl.signup = m.prop(new Signup.model());
 
   ctrl.add = function () {
-    return m.request({ method:"POST", url:"/#/signup", data: signup() }).then(function(token){ 
-      //send data to node server
-      // console.log('inside signup')
+    return m.request({ method:"POST", url:"/#/signup", data: ctrl.signup() }).then(function(token){  //getting meetup data
+      console.log('inside signup. token:',token);
       localStorage.setItem('session', token)
-      m.route('/')
+      m.route('/#/')
     })
   }
 };
