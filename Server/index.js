@@ -15,7 +15,7 @@ var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet';
 
 app.get('/db', function(request, response){
   pg.connect(databaseUrl, function(err, client, done){
-    client.query('Select * From meetups', function(err, result){
+    client.query('SELECT id, event_name FROM meetups order by id', function(err, result){
       done();
       if(err){
         throw err;
