@@ -6,10 +6,11 @@ var CronJob = require('cron').CronJob,
       connection: databaseUrl
     });
 
+// Runs every night at midnight
 var update = new CronJob('00 00 00 * * *',
   callAPI,
   function(){ console.log('Cron called API') }, // function to run when callAPI is done
-  true, // start now
+  true, // start now (when server spins up)
   'America/Chicago'
 );
 
@@ -86,10 +87,10 @@ function callAPI () {
               })
           }
 
-        }) // end of .then (insert/update)
-      }) // end of data.map()
-
-    })
+        }) // end .then (insert/update)
+      }) // end data.map()
+    }) // end .then (after API request)
+     
     .catch(function (error){
       if (error) {
         console.error('error:', error);
