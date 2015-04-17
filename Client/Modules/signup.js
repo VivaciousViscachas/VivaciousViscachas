@@ -14,7 +14,7 @@ Signup.controller = function(){
   ctrl.add = function () {
     return m.request({ method:"POST", url:"/signup", data:ctrl.signup() }).then(function(token){ 
       console.log('inside signup');
-      localStorage.setItem('session', token.request)
+      localStorage.setItem('session', token)
       m.route('/')
     })
   }
