@@ -1,10 +1,10 @@
-var request = require('request-promise');
-// var pg = require('pg');
-// var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet';
-var db = require('knex')({
-  client: 'pg',
-  connection: process.env.DATABASE_URL || 'postgres://localhost/devmeet'
-});
+var request = require('request');
+var pg = require('pg');
+var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet';
+// var db = require('knex')({
+//   client: 'pg',
+//   connection: 'postgres://localhost/devmeet'
+// });
 
 module.exports.test = function () {
   // Call the API to get the next 10 tech meetups in Austin
