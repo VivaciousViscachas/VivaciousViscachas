@@ -25,16 +25,16 @@ starred.view = function(ctrl){
   var meetupList = ctrl.meetupList;
 
   return m('div.allStarred', [
-    m('h4.mymeetups', 'My Meetups: '),
+    m('h4.mymeetups', 'My Meetups '),
     m('div.queue', [ //div witht the class '.queue'
       m("ul", [
-        m("li", meetupList.map(function(meetup){
+        m("p", meetupList.map(function(meetup){
           return m('div.event', [
-            m('li.eventName', meetup.event_name),
+            m('p.eventName', meetup.event_name),
             m('p', " Location: "+meetup.venue_address),
             m('p', " Start Time: "+meetup.event_time),
-            m('p', " Duration: "+meetup.event_duration),
-            m('p', " Description: "+meetup.event_description)
+            m('p', " Duration: "+meetup.event_duration)
+            // m('p', " Description: "+meetup.event_description)
           ])
             //goal: set up list items by time 
         })) 
