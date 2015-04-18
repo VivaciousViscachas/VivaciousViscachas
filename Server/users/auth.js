@@ -65,39 +65,33 @@ module.exports= {
         console.log('error with signin')
       }
     })
-    // pg.connect(databaseUrl, function(err, client, done){
-    //   client.query('SELECT password FROM users WHERE email=' + email, function(err, result){
-    //     done();
-    //     if (err) console.log ('user does not exist')
-    //     else {
-    //       bcrypt.compare(password, result, function(err, same) {
-    //         if (same){
-    //           var token = jwt.encode(userObj, 'secret') 
-    //           response.send({token: token, email:email}) 
-    //         }
-    //       });
-    //     }
-    //   })
-    // })
   },
 
-  profile: function(request, response){
-    var email = request.body;
+  starred: function(request, response){
+    var email = request.body.email;
     var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
 
     if (email){ 
-      pg.connect(databaseUrl, function(err, client, done){
-        client.query('SELECT (meetups.event_name, meetups.event_time, meetups.event_description, meetups.event_duration, meetups.venue_address) FROM starred JOIN meetups ON (starred.meetup_id = meetups.id) JOIN users ON (users.id = starred.user_id) WHERE users.email=' + email, function(err, result){
-            //query database users table using email to access user_id
-            //JOIN starred table using user_id to access meetup_id
-            //JOIN meetups table with meetup_id's to access meetups (array of objects)
-          done();
-          if (err) console.log('error in profile in auth.js')
-          else {
-            response.send(result) //return array of objects to the profile page 
-          }
-        })
+      db.select('event_name', 'event_time', 'event_description', 'event_duration', 'venue_address')
+      .from('meetups')
+      // .from('starred')
+      // .innerJoin('meetups',"starred.meetup_id", "meetups.id")
+      // .innerJoin('users', 'users.id', 'starred.user_id')
+      // .where('email',email)
+      .then(function(result){
+        console.log('result in starred auth',result)
+        response.send(result) //send back starred data
       })
+
+        //JOIN meetups ON (starred.meetup_id = meetups.id) 
+        //JOIN users ON (users.id = starred.user_id) 
+        //WHERE users.email=' + email
+      //       //query database users table using email to access user_id
+      //       //JOIN starred table using user_id to access meetup_id
+      //       //JOIN meetups table with meetup_id's to access meetups (array of objects)
+
+    } else {
+      console.log('error in starred auth.js')
     }
   }
 }
