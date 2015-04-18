@@ -13,14 +13,12 @@
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
 ## Usage
 
-> Create an account, find a meetup, star it, sign up for notifications, and meet up.
+> Create an account, find a meetup, star it and meet up.
 
 ## Requirements
 
