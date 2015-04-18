@@ -5,12 +5,13 @@ var jwt = require('jwt-simple'),
 
 module.exports= {
   signup:function(request, response){
-    var firstName = request.body.firstName
-    var email = request.body.email
-    var password = request.body.password
-    var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
-    var userObj = {'firstName': firstName, 'email': email, 'password':password}
-    var salt = bcrypt.genSaltSync(10);
+    //separating the request data
+    var firstName = request.body.firstName,
+      email = request.body.email,
+      password = request.body.password,
+      databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet',
+      userObj = {'firstName': firstName, 'email': email, 'password':password},
+      salt = bcrypt.genSaltSync(10); //creating the salt
 
     // pg.connect(databaseUrl, function(err, client, done){
     //   client.query('SELECT firstName FROM users WHERE email=' + email, function(err, result){ //check DB for email
