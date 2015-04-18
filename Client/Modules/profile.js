@@ -35,8 +35,8 @@ starred.view = function(ctrl){
             m('p', " Start Time: "+meetup.event_time),
             m('p', " Duration: "+meetup.event_duration)
             // m('p', " Description: "+meetup.event_description)
-          ])
             //goal: set up list items by time 
+          ])
         })) 
       ]) 
     ])
