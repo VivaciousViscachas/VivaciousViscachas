@@ -1,9 +1,34 @@
 
+body {
+  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('devmeetup.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 .header {
   margin: auto;
   width: 80%;
   text-align: center;
   margin-top: 30px;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.allStarred{
+  padding: 10px;
+  width: 30%;
+  margin: auto;
+  background: white;
+  border-radius: 10px;
+  opacity: .9;
+}
+
+.mymeetups {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.eventName {
+  font-weight: bold;
 }
 
 .starred,
@@ -22,3 +47,4 @@
 .unstarred {
   background-position: -22px 0;
 }
+

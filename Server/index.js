@@ -60,6 +60,7 @@ console.log('Server listening on port ' + 5000)
 
 app.post('/signup', auth.signup)
 app.post('/signin', auth.signin)
+app.post('/mymeetups', auth.starred)
 app.get('/feed', function(request, response){
   // pg.connect(databaseUrl, function (err, client, done){
   //   client.query('Select * From Meetups', function (err, result){
@@ -80,6 +81,11 @@ app.get('/feed', function(request, response){
     ]
 
     response.end(JSON.stringify(data));
-});
-app.get('/mymeetups', auth.profile)
+})
+
+
+
+
+
+
 

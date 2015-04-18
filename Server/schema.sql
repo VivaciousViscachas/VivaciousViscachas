@@ -7,7 +7,7 @@ CREATE TABLE users(
         id SERIAL
     ,   first_name VARCHAR(30)
     ,   email VARCHAR(40)
-    ,   password VARCHAR(50)
+    ,   password VARCHAR(100)
     ,   PRIMARY KEY (id)
 );
 

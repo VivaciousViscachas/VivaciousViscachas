@@ -10,11 +10,10 @@ Signin.controller = function(){
  ctrl.user = m.prop(new Signin.model());
 
    ctrl.signin = function(){
-      return m.request({method:"POST", url:"/#/signin", data: ctrl.user()}).then(function(token){
+      return m.request({method:"POST", url:"/signin", data:ctrl.user()}).then(function(token){
          //check database for username/password (auth)
-         localStorage.setItem('session', token.token)
-         // console.log(localStorage.getItem('session'))
-         // console.log('inside signin')
+         var userObj = JSON.stringify({session: token.token, email: ctrl.user().email()})
+         localStorage.setItem('session', userObj)
          m.route('/')
       })
    }
@@ -41,3 +40,6 @@ Signin.view = function(ctrl){
       ])
    ])
 };
+
+
+

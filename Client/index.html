@@ -13,10 +13,6 @@
     </div>
 
     <div id='theView'>
-      <!-- <div id="signup"></div>
-      <div id="signin"></div>
-      <div id="saved"></div>
-      <div id="feed"></div> -->
     </div>
 
     <script src="vendor/mithril.js"></script>
@@ -34,7 +30,7 @@
       if (localStorage.getItem("session")){
         m.route(document.getElementById('theView'), '/', {
          '/': feed, 
-         '/mymeetups': profile,
+         '/mymeetups': starred,
          '/signup': Signup,
          '/signin': Signin,
          '/feed': feed
@@ -52,3 +48,8 @@
     </script>
   </body>
 </html>
+
+
+
+
+
