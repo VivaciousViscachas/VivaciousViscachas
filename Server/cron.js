@@ -14,6 +14,13 @@ var update = new CronJob('00 00 00,12 * * *',
   'America/Chicago'
 );
 
+var clearOld = new CronJob('00 30 00,12 * * *',
+  clearOldEvents,
+  function(){ console.log('Old events cleared') }, // function to run when callAPI is done
+  true, // start now (when server spins up)
+  'America/Chicago'
+);
+
 function callAPI () {
   // Call the API to get the next tech meetups in Austin
   request('https://api.meetup.com/2/open_events?&category=34&status=upcoming&zip=78701&radius=20&key='+process.env.MEETUP_KEY)
@@ -97,3 +104,15 @@ function callAPI () {
       }
     });
 }
+
+//deletes yesterday's events
+function clearOldEvents(){
+
+  var yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  db('meetups')
+    .where('event_time', '<', yesterday)
+    .del()
+
+};
