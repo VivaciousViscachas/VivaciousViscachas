@@ -3,7 +3,7 @@ var app = express();
 var pg = require('pg');
 var auth = require('./users/auth.js');
 var bodyParser = require('body-parser');
-var cron = require('./cron.js');
+var api = require('./cron');
 
 app.use(express.static(__dirname + '/../Client'));
 app.use(bodyParser.json())
