@@ -82,13 +82,10 @@ module.exports= {
         console.log('result in starred auth',result)
         response.send(result) //send back starred data
       })
-
-        //JOIN meetups ON (starred.meetup_id = meetups.id) 
-        //JOIN users ON (users.id = starred.user_id) 
-        //WHERE users.email=' + email
-      //       //query database users table using email to access user_id
-      //       //JOIN starred table using user_id to access meetup_id
-      //       //JOIN meetups table with meetup_id's to access meetups (array of objects)
+      //Above: 
+      //query database users table using email to access user_id
+      //JOIN starred table using user_id to access meetup_id
+      //JOIN meetups table with meetup_id's to access meetups (array of objects)
 
     } else {
       console.log('error in starred auth.js')
