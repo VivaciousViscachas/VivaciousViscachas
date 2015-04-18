@@ -1,6 +1,11 @@
 var jwt = require('jwt-simple'), 
     pg = require('pg'),
-    bcrypt = require('bcrypt-nodejs');
+    bcrypt = require('bcrypt-nodejs'),
+    databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet',
+    db = require('knex')({
+      client: 'pg',
+      connection:databaseUrl
+    })
 
 
 module.exports= {
@@ -11,18 +16,40 @@ module.exports= {
       password = request.body.password,
       databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet',
       userObj = {'firstName': firstName, 'email': email, 'password':password},
-      salt = bcrypt.genSaltSync(10); //creating the salt
+      salt = bcrypt.genSaltSync(10); 
+
+      db.select("first_name") //
+      .from('users')
+      .where('email', email)
+      .then(function(result){
+        console.log(result)
+        if (result.length === 0){ //if user not found in database
+          var hash = bcrypt.hashSync(password, salt); 
+          db('users').insert({ //insert the user and their info
+            first_name: firstName,
+            email: email,
+            password: hash
+          })
+          .then(function(result){
+            var token = jwt.encode(userObj, 'secret'); //then issue a token
+            console.log('token',token)
+            response.send({token: token, email: email})  //send user token
+          })
+        } else {
+          console.log('user already exists')
+        }
+      })
 
     // pg.connect(databaseUrl, function(err, client, done){
-    //   client.query('SELECT firstName FROM users WHERE email=' + email, function(err, result){ //check DB for email
+    //   client.query('SELECT first_name FROM users WHERE email=' + email, function(err, result){ //check DB for email
     //     done();
     //     if(err){ //if doesn't exist in DB add user to DB
     //       var hash = bcrypt.hashSync(password, salt); 
     //       client.query('INSERT INTO users (first_name, email, password) VALUES ($1, $2, $3)',[firstName, email, hash], function(){ 
-    //         localStorage.setItem('email', email)
+    //         // localStorage.setItem('email', email)
     //         var token = jwt.encode(userObj, 'secret');
     //         console.log('token',token)
-    //         response.send({token: token})  //send user token
+    //         response.send({token: token, email: email})  //send user token
     //       })
     //     } else { 
     //       console.log('user already exists')
@@ -43,9 +70,8 @@ module.exports= {
         else {
           bcrypt.compare(password, result, function(err, same) {
             if (same){
-              localStorage.setItem('email', email)
               var token = jwt.encode(userObj, 'secret') 
-              response.send({token: token}) 
+              response.send({token: token, email:email}) 
             }
           });
         }
