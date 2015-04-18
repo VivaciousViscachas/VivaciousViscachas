@@ -33,7 +33,7 @@ module.exports= {
           .then(function(result){
             var token = jwt.encode(userObj, 'secret'); //then issue a token
             console.log('token',token)
-            response.send({token: token, email: email})  //send user token
+            response.send({token: token})  //send user token
           })
         } else {
           console.log('user already exists')
@@ -42,23 +42,23 @@ module.exports= {
   },
   
   signin:function(request, response){
-    var email = request.body.email
-    var password = request.body.password
-    var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
+    var email = request.body.email,
+      password = request.body.password,
+      userObj = {'email': email, 'password':password},
+      databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
 
     db.select('password')
     .from('users')
     .where('email',email)
     .then(function(result){
-      console.log('result',result)
       if (result.length > 0) {
-        var password = result[0].password;
-        console.log('pw',password);
+        var result = result[0].password;
+
         bcrypt.compare(password, result, function(err, same) {
           if (same){
             console.log("token sending!")
             var token = jwt.encode(userObj, 'secret') 
-            response.send({token: token, email:email}) 
+            response.send({token: token}) 
           }
         })
       } else {

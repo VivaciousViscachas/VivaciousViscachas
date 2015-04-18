@@ -8,7 +8,8 @@ profile.model = function(userObj){
 profile.controller = function(){
   var ctrl = this;
   ctrl.meetupList;
-  ctrl.email = localStorage.getItem('email')
+  ctrl.email = JSON.parse(localStorage.getItem('session'));
+  // console.log(ctrl.email)
 
   ctrl.getMeetups = function () {
     return m.request({method:"POST", url:"/mymeetups", data: ctrl.email}).then(function(result){
