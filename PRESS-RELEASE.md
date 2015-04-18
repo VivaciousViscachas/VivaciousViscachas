@@ -20,8 +20,8 @@ Once the project moves into development, the press release can be used as a touc
   > Our goal: making the world a better place one meetup at a time.
   > What inspired DevMeet? There was no one source specifically dedicated to developer meetups.
 
-  > DevMeet allows you to search for local developer meetups that you want to attend and sets up custom notifications to remind you when your saved events are happening. We wanted to cut out much of the background noise that often comes with local event apps and only send you the reminders you want for the events you wish to attend and consolidate the events from multiple sources so you don't have to. 
- > Just sign up, enter your zipcode, and start choosing the events you wish to attend!
+  > DevMeet allows you to search for local developer meetups that you want to attend. We cut out much of the background noise that often comes with local event apps. 
+  > Just sign up and start choosing the events you wish to attend!
 
   > User review: 'DevMeet makes it easy to discover local meetups and doesn't overwhelm me with unneccessary emails and reminders'
 

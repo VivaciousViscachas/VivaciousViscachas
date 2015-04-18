@@ -1,8 +1,13 @@
 ### node etc ###
 
+.DS_Store
+
 # Logs
 logs
 *.log
+
+# Merge .orig files
+*.orig
 
 # Runtime data
 pids

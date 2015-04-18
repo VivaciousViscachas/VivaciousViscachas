@@ -35,3 +35,4 @@ feed.view = function (ctrl) {
     }))
   ])
 }
+
