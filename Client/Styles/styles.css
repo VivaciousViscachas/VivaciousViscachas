@@ -30,3 +30,21 @@ body {
 .eventName {
   font-weight: bold;
 }
+
+.starred,
+.unstarred {
+  background-image: url('../Image/star.gif');
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 22px;
+  width: 22px;
+}
+
+.starred {
+  background-position: 0 0;
+}
+
+.unstarred {
+  background-position: -22px 0;
+}
+
