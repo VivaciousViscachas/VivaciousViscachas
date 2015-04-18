@@ -7,7 +7,7 @@ var CronJob = require('cron').CronJob,
     });
 
 // Runs every night at midnight
-var update = new CronJob('00 00 00 * * *',
+var update = new CronJob('00 00 * * * *',
   callAPI,
   function(){ console.log('Cron called API') }, // function to run when callAPI is done
   true, // start now (when server spins up)
