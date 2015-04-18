@@ -69,15 +69,15 @@ module.exports= {
 
   starred: function(request, response){
     var email = request.body.email;
+    console.log(email)
     var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
 
     if (email){ 
-      db.select('event_name', 'event_time', 'event_description', 'event_duration', 'venue_address')
+      db.select('meetups.event_name', 'meetups.event_time', 'meetups.event_description', 'meetups.event_duration', 'meetups.venue_address')
       .from('meetups')
-      // .from('starred')
-      // .innerJoin('meetups',"starred.meetup_id", "meetups.id")
-      // .innerJoin('users', 'users.id', 'starred.user_id')
-      // .where('email',email)
+      .innerJoin('starred',"starred.meetup_id", "meetups.id")
+      .innerJoin('users', 'users.id', 'starred.user_id')
+      .where('users.email',email)
       .then(function(result){
         console.log('result in starred auth',result)
         response.send(result) //send back starred data
