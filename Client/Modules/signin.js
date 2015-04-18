@@ -10,7 +10,7 @@ Signin.controller = function(){
  ctrl.user = m.prop(new Signin.model());
 
    ctrl.signin = function(){
-      return m.request({method:"POST", url:"/signin", data: ctrl.user()}).then(function(token){
+      return m.request({method:"POST", url:"/signin", data:ctrl.user()}).then(function(token){
          //check database for username/password (auth)
          console.log('inside signin')
          var userObj = {session: token.token, email: token.email}

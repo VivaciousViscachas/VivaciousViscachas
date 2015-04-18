@@ -39,23 +39,6 @@ module.exports= {
           console.log('user already exists')
         }
       })
-
-    // pg.connect(databaseUrl, function(err, client, done){
-    //   client.query('SELECT first_name FROM users WHERE email=' + email, function(err, result){ //check DB for email
-    //     done();
-    //     if(err){ //if doesn't exist in DB add user to DB
-    //       var hash = bcrypt.hashSync(password, salt); 
-    //       client.query('INSERT INTO users (first_name, email, password) VALUES ($1, $2, $3)',[firstName, email, hash], function(){ 
-    //         // localStorage.setItem('email', email)
-    //         var token = jwt.encode(userObj, 'secret');
-    //         console.log('token',token)
-    //         response.send({token: token, email: email})  //send user token
-    //       })
-    //     } else { 
-    //       console.log('user already exists')
-    //     }
-    //   })
-    // })
   },
   
   signin:function(request, response){
@@ -63,20 +46,39 @@ module.exports= {
     var password = request.body.password
     var databaseUrl = process.env.DATABASE_URL || 'postgres://localhost/devmeet'
 
-    pg.connect(databaseUrl, function(err, client, done){
-      client.query('SELECT password FROM users WHERE email=' + email, function(err, result){
-        done();
-        if (err) console.log ('user does not exist')
-        else {
-          bcrypt.compare(password, result, function(err, same) {
-            if (same){
-              var token = jwt.encode(userObj, 'secret') 
-              response.send({token: token, email:email}) 
-            }
-          });
-        }
-      })
+    db.select('password')
+    .from('users')
+    .where('email',email)
+    .then(function(result){
+      console.log('result',result)
+      if (result.length > 0) {
+        var password = result[0].password;
+        console.log('pw',password);
+        bcrypt.compare(password, result, function(err, same) {
+          if (same){
+            console.log("token sending!")
+            var token = jwt.encode(userObj, 'secret') 
+            response.send({token: token, email:email}) 
+          }
+        })
+      } else {
+        console.log('error with signin')
+      }
     })
+    // pg.connect(databaseUrl, function(err, client, done){
+    //   client.query('SELECT password FROM users WHERE email=' + email, function(err, result){
+    //     done();
+    //     if (err) console.log ('user does not exist')
+    //     else {
+    //       bcrypt.compare(password, result, function(err, same) {
+    //         if (same){
+    //           var token = jwt.encode(userObj, 'secret') 
+    //           response.send({token: token, email:email}) 
+    //         }
+    //       });
+    //     }
+    //   })
+    // })
   },
 
   profile: function(request, response){
