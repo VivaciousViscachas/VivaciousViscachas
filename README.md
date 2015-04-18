@@ -24,10 +24,9 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Mithril
-- Express
-- MySQL
+- Node 0.12.x
+- Mithril 0.1.34
+- Postgresql 9.4.x
 
 ## Development
 
