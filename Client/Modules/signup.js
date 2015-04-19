@@ -31,7 +31,7 @@ Signup.view = function(ctrl){
         m('label', "Email:"),
         m('input[type=text].form-control', { value: ctrl.signup().email(), onchange: m.withAttr('value', ctrl.signup().email )})
       ]),
-      m('div.form-group.col-md-6.col-md-offset-3',[
+      m('div.form-group.col-md-6.col-md-offset-3',  [
         m('label', "Password:"),
         m('input[type=password].form-control', { value: ctrl.signup().password(), onchange: m.withAttr('value', ctrl.signup().password )}),
         m('br'),

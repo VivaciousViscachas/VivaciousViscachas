@@ -40,6 +40,3 @@ Signin.view = function(ctrl){
       ])
    ])
 };
-
-
-
