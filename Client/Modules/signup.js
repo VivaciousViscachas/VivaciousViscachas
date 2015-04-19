@@ -12,7 +12,7 @@ Signup.controller = function(){
   ctrl.signup = m.prop(new Signup.model());
 
   ctrl.add = function () {
-    return m.request({ method:"POST", url:"/#/signup", data:ctrl.signup() }).then(function(token){ 
+    return m.request({ method:"POST", url:"/signup", data:ctrl.signup() }).then(function(token){ 
       var sessionObj = JSON.stringify({session: token.token, email: ctrl.signup().email()})
       localStorage.setItem('session', sessionObj) //storing a session token and the email
       m.route('/') //rerouting to feed
@@ -31,7 +31,7 @@ Signup.view = function(ctrl){
         m('label', "Email:"),
         m('input[type=text].form-control', { value: ctrl.signup().email(), onchange: m.withAttr('value', ctrl.signup().email )})
       ]),
-      m('div.form-group.col-md-6.col-md-offset-3',[
+      m('div.form-group.col-md-6.col-md-offset-3',  [
         m('label', "Password:"),
         m('input[type=password].form-control', { value: ctrl.signup().password(), onchange: m.withAttr('value', ctrl.signup().password )}),
         m('br'),
