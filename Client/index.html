@@ -7,6 +7,8 @@
 
   <body>
     
+    <!-- <a href='#/signin' class='logout hidden'>Logout</a> -->
+    <div id='logout'> </div>
     <div class='header'>
       <h1>DevMeet</h1>
       <h3>Connect with other devs</h3>
@@ -20,30 +22,22 @@
     <script src="Modules/signin.js"></script>
     <script src="Modules/feed.js"></script>
     <script src="Modules/profile.js"></script>
+    <script src="Modules/logout.js"></script>
+    <script src="Modules/session.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!--   // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
     <script type="text/javascript">
-      // m.module(document.getElementById('signup'), Signup);
-      // m.module(document.getElementById('feed'), feed);
       m.route.mode = 'hash'
 
-      if (localStorage.getItem("session")){
-        m.route(document.getElementById('theView'), '/', {
-         '/': feed, 
-         '/mymeetups': starred,
-         '/signup': Signup,
-         '/signin': Signin,
-         '/feed': feed
-        })
-      } else {
-        m.route(document.getElementById('theView'), '/', {
-         '/': feed, 
-         '/mymeetups': Signin,
-         '/signup': Signup,
-         '/signin': Signin,
-         '/feed': feed
-        })
-      }
+      m.route(document.getElementById('theView'), '/', {
+       '/': feed, 
+       '/mymeetups': starred,
+       '/signup': Signup,
+       '/signin': Signin,
+       '/feed': feed
+      })
+
+      m.module(document.getElementById('logout'), Logout);
+
 
     </script>
   </body>
