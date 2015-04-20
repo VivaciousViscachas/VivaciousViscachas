@@ -1,7 +1,8 @@
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('devmeetup.jpg') no-repeat center center fixed;
+  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url('meetup.jpg') no-repeat center center fixed;
   background-size: cover;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .header {
@@ -47,4 +48,21 @@ body {
 .unstarred {
   background-position: -22px 0;
 }
+
+.memberCheck {
+  color: white;
+}
+
+.link {
+  color: white;
+  text-decoration: underline;
+}
+
+label {
+  color: white;
+  font: ;
+}
+
+
+
 

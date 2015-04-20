@@ -10,7 +10,7 @@ Signin.controller = function(){
  ctrl.user = m.prop(new Signin.model());
 
    ctrl.signin = function(){
-      return m.request({method:"POST", url:"/#/signin", data:ctrl.user()}).then(function(token){
+      return m.request({method:"POST", url:"/signin", data:ctrl.user()}).then(function(token){
          //check database for username/password (auth)
          var userObj = JSON.stringify({session: token.token, email: ctrl.user().email()})
          localStorage.setItem('session', userObj)
@@ -35,11 +35,8 @@ Signin.view = function(ctrl){
       ]),
 
       m('div.col-md-6.col-md-offset-3',[
-         m('span', 'Not a member yet?  '),
-         m('a[href=#/signup]','Sign Up!')
+         m('span.memberCheck', 'Not a member yet?  '),
+         m('a[href=#/signup].link','Sign Up!')
       ])
    ])
 };
-
-
-
