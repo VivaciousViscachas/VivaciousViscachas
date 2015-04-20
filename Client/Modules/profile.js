@@ -43,7 +43,6 @@ starred.view = function(ctrl){
   ])
 };
 
-
 //GOAL: add a dequeue button for users to remove meetups they no longer want to go to
 
 
