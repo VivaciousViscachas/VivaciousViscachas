@@ -52,3 +52,8 @@ See [CONTRIBUTING.md](https://github.com/unexpected-lion/ourglass/blob/master/co
 - Add another API's meetups to the database
 - The ability to remove things fron a user's My Meetups queue
 - Provide more imformation in the feed/making the feed better (but not different, the code is solid)
+- Error handling for existing user on sign in and sign up
+- A favicon, duh 
+
+
+## http://devmeet.herokuapp.com/#/
