@@ -105,7 +105,7 @@ module.exports= {
       var feed = {
         m_id: meetup.data.id
       };
-
+      console.log(meetup.data.id)
       db.select('id')
         .from('users')
         .where('email', token.email)
