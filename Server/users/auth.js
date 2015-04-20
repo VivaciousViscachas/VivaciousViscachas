@@ -7,7 +7,6 @@ var jwt = require('jwt-simple'),
       connection:databaseUrl
     })
 
-
 module.exports= {
   signup:function(request, response){
     //separating the request data
@@ -22,7 +21,6 @@ module.exports= {
       .from('users')
       .where('email', email)
       .then(function(result){
-        console.log(result)
         if (result.length === 0){ //if user not found in database
           var hash = bcrypt.hashSync(password, salt); 
           db('users').insert({ //insert the user and their info
@@ -32,10 +30,10 @@ module.exports= {
           })
           .then(function(result){
             var token = jwt.encode(userObj, 'secret'); //then issue a token
-            console.log('token',token)
             response.send({token: token})  //send user token
           })
         } else {
+            //to do -- error handling
           console.log('user already exists')
         }
       })
@@ -56,12 +54,12 @@ module.exports= {
 
         bcrypt.compare(password, result, function(err, same) {
           if (same){
-            console.log("token sending!")
             var token = jwt.encode(userObj, 'secret') 
             response.send({token: token}) 
           }
         })
       } else {
+          //to do -- error handling
         console.log('error with signin')
       }
     })
@@ -79,7 +77,6 @@ module.exports= {
       .innerJoin('users', 'users.id', 'starred.user_id')
       .where('users.email',email)
       .then(function(result){
-        console.log('result in starred auth',result)
         response.send(result) //send back starred data
       })
       //Above: 
@@ -105,7 +102,6 @@ module.exports= {
       var feed = {
         m_id: meetup.data.id
       };
-      console.log(meetup.data.id)
       db.select('id')
         .from('users')
         .where('email', token.email)
@@ -126,7 +122,7 @@ module.exports= {
                 user_id: u_id
               })
             .then(function(){
-              console.log('inserted')
+                //to do - do something in here
             })
           }
         })
@@ -134,12 +130,3 @@ module.exports= {
       response.end(JSON.stringify(meetup))   
   }
 }
-
-
-
-
-
-
-
-
-
