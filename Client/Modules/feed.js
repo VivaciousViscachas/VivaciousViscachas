@@ -48,7 +48,7 @@ feed.view = function (ctrl) {
           m('p', " Location: "+meetup.venue_address),
           m('p', " Start Time: "+meetup.event_time),
           m('p', " Duration: "+meetup.event_duration),
-          m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
+          m('button.unstarred', {onclick: function(){ mctrl.star(meetup) }})
         ])
       ])
     }))
