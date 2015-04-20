@@ -44,3 +44,11 @@ View the project roadmap [here](https://github.com/VivaciousVivachas/VivaciousVi
 ## Contributing
 
 See [CONTRIBUTING.md](https://github.com/unexpected-lion/ourglass/blob/master/contributing.md) for contribution guidelines.
+
+## Potential Add-Ons
+- Text/email alert service for saved events
+- Error handling for sign in and sign up
+- Make the 'starred/unstarred' classes change on click
+- Add another API's meetups to the database
+- The ability to remove things fron a user's My Meetups queue
+- Provide more imformation in the feed/making the feed better (but not different, the code is solid)
