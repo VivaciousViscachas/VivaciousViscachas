@@ -11,7 +11,7 @@ Signin.controller = function(){
 
    ctrl.signin = function(){
       Session.logUserIn(ctrl.user()).then(function(){
-         m.route('/')
+         m.route('/feed')
       })
    }
 };

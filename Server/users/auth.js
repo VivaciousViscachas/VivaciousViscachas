@@ -103,7 +103,7 @@ module.exports= {
       };
 
       var feed = {
-        m_id: meetup.id
+        m_id: meetup.data.id
       };
 
       db.select('id')

@@ -12,7 +12,7 @@ Signup.controller = function(){
 
   ctrl.add = function () {
     Session.signUserUp(ctrl.signup()).then(function(){
-      m.route('/') 
+      m.route('/feed') 
     })
   }
 };
