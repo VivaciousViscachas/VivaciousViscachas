@@ -13,9 +13,7 @@ starred.controller = function(){
 
   ctrl.getMeetups = function () {
     return m.request({method:"POST", url:"/mymeetups", data: email}).then(function(result){
-      console.log('inside getMeetups!')
       ctrl.meetupList = result;
-      console.log('result',result)
     })
   }
 
