@@ -40,11 +40,15 @@ feed.controller = function () {
 }
 
 feed.view = function (ctrl) {
-  return m('div.feed', [
+  return m('div.allStarred', [
     mctrl.listOfMeetups.map((function(meetup){
       return m('ul', [
-        m('li', [
-          m('h3', meetup.event_name), m('button.starred', {onclick: function(){ mctrl.star(meetup)}})
+        m('p', [
+          m('p.eventName', meetup.event_name),
+          m('p', " Location: "+meetup.venue_address),
+          m('p', " Start Time: "+meetup.event_time),
+          m('p', " Duration: "+meetup.event_duration),
+          m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
         ])
       ])
     }))
