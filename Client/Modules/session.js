@@ -1,16 +1,15 @@
 var Session = {}
 
-Session.isLoggedIn = false
-
-Session.checkLoggedIn = function(){
+Session.isLoggedIn = function(){
   if (localStorage.getItem('session')){
-    Session.isLoggedIn = true;
+    return true;
+  }else{
+    return false;
   }
 }
 
 Session.logUserOut = function(){
   localStorage.removeItem('session')
-  Session.isLoggedIn = false;
 }
 
 
@@ -18,7 +17,6 @@ Session.logUserIn = function (user) {
   return m.request({method:"POST", url:"/signin", data: user}).then(function(token){
      var userObj = JSON.stringify({session: token.token, email: user.email()})
      localStorage.setItem('session', userObj)
-     Session.isLoggedIn = true
   })
 }
 
