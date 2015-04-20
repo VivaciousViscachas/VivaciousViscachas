@@ -90,6 +90,11 @@ module.exports= {
     } else {
       console.log('error in starred auth.js')
     }
+  },
+  star: function(request, response){
+    var meetup = {data: request.body.test};
+    console.log(meetup)
+    response.send(JSON.stringify(meetup))
   }
 }
 
