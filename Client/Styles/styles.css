@@ -68,3 +68,9 @@ label {
   margin-right: 15px;
   color: white;
 }
+.feed {
+  background-color: white;
+  border-radius: 20px;
+  margin-right: 20%;
+  margin-left: 20%
+}
