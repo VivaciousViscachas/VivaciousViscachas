@@ -32,11 +32,12 @@ feed.controller = function () {
 }
 
 feed.view = function (ctrl) {
-  return m('div', [
+  return m('div.allStarred', [
     mctrl.listOfMeetups.map((function(meetup){
       return m('ul', [
-        m('li', [
-          m('div', meetup.id), m('div', meetup.event_name), m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
+        m('p', [
+          m('div', meetup.event_name), 
+          m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
         ])
       ])
     }))
