@@ -92,9 +92,47 @@ module.exports= {
     }
   },
   star: function(request, response){
-    var meetup = {data: request.body.test};
-    console.log(meetup)
-    response.send(JSON.stringify(meetup))
+    var meetup = {data: request.body.meetup};
+    var email = {data: request.body.email};
+    var db = require('knex')({
+      client: 'pg',
+      connection: databaseUrl
+    })
+
+      var token = {
+        email: email.data
+      };
+
+      var feed = {
+        m_id: meetup.id
+      };
+
+      db.select('id')
+        .from('users')
+        .where('email', token.email)
+
+      .then(function(result){
+        var u_id = result[0].id
+
+        db.select('meetup_id', 'user_id')
+          .from('starred')
+          .where('meetup_id', feed.m_id)
+          .andWhere('user_id', u_id)
+
+        .then(function(result){
+          if (result.length === 0) {
+            db('starred')  
+              .insert({
+                meetup_id: feed.m_id,
+                user_id: u_id
+              })
+            .then(function(){
+              console.log('inserted')
+            })
+          }
+        })
+      })
+      response.end(JSON.stringify(meetup))   
   }
 }
 

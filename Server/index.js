@@ -63,25 +63,15 @@ app.post('/signin', auth.signin)
 app.post('/mymeetups', auth.starred)
 app.post('/star', auth.star)
 app.get('/feed', function(request, response){
-  // pg.connect(databaseUrl, function (err, client, done){
-  //   client.query('Select * From Meetups', function (err, result){
-  //     if(err){
-  //       throw err
-  //     } else {
-  //       response.send(JSON.stringify(results));
-  //     }
-  //   })
-  // })
-    var data =  [
-      {"name" : "the austin linux meetup",
-        "members" : 11000
-      },
-      {"name" : "the austin javascript meetup",
-      "members" : 1223123
+  pg.connect(databaseUrl, function (err, client, done){
+    client.query('Select * FROM meetups ORDER BY id', function (err, result){
+      if(err){
+        throw err
+      } else {
+        response.send(JSON.stringify(result.rows));
       }
-    ]
-
-    response.end(JSON.stringify(data));
+    })
+  })
 })
 
 

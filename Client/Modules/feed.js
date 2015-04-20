@@ -20,7 +20,7 @@ feed.controller = function () {
   }
 
   mctrl.getMeetups = function () {
-   return m.request({method:"GET", url:"/meetups"}).then(function(result){
+   return m.request({method:"GET", url:"/feed"}).then(function(result){
     localStorage.setItem('meetups', JSON.stringify(result))
    })
   }
@@ -28,7 +28,9 @@ feed.controller = function () {
   mctrl.star = function (meetup) {
     console.log(meetup)
     mctrl.listOfMeetups[meetup.id-1].starred = true;
-    var test = {test: meetup};
+    var email = JSON.parse(localStorage.getItem('session')).email
+    console.log(email)
+    var test = {meetup: meetup, email:email};
     return m.request({method:"POST", url:"/star", data:test}).then(function(result){
       console.log(JSON.parse(JSON.stringify(result)))
     })
@@ -38,12 +40,11 @@ feed.controller = function () {
 }
 
 feed.view = function (ctrl) {
-  return m('div.allStarred', [
+  return m('div.feed', [
     mctrl.listOfMeetups.map((function(meetup){
       return m('ul', [
-        m('p', [
-          m('div', meetup.event_name), 
-          m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
+        m('li', [
+          m('h3', meetup.event_name), m('button.starred', {onclick: function(){ mctrl.star(meetup)}})
         ])
       ])
     }))
