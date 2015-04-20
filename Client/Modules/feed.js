@@ -38,7 +38,7 @@ feed.view = function (ctrl) {
     mctrl.listOfMeetups.map((function(meetup){
       return m('ul', [
         m('li', [
-          m('div', meetup.id), m('div', meetup.event_name), m('button.starred', {onclick: function(){ mctrl.star(meetup)}})
+          m('h3', meetup.event_name), m('button.starred', {onclick: function(){ mctrl.star(meetup)}})
         ])
       ])
     }))
