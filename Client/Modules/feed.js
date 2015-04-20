@@ -9,16 +9,22 @@ feed.model = function (item) {
 
 feed.controller = function () {
   mctrl = this;
+
+  if (Session.isLoggedIn === false){
+
+  }
+
   mctrl.listOfItems = function(obj){
       var list = obj;
       return list;
   }
-  //gets the meetups from the DB and then stores them in localStorage
+
   mctrl.getMeetups = function () {
    return m.request({method:"GET", url:"/feed"}).then(function(result){
     localStorage.setItem('meetups', JSON.stringify(result))
    })
   }
+
   mctrl.star = function (meetup) {
     console.log(meetup)
     mctrl.listOfMeetups[meetup.id-1].starred = true;
