@@ -42,7 +42,10 @@ feed.view = function (ctrl) {
     mctrl.listOfMeetups.map((function(meetup){
       return m('ul', [
         m('p', [
-          m('div', meetup.event_name), 
+          m('p.eventName', meetup.event_name),
+          m('p', " Location: "+meetup.venue_address),
+          m('p', " Start Time: "+meetup.event_time),
+          m('p', " Duration: "+meetup.event_duration),
           m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
         ])
       ])
