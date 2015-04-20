@@ -9,16 +9,22 @@ feed.model = function (item) {
 
 feed.controller = function () {
   mctrl = this;
+
+  if (Session.isLoggedIn === false){
+
+  }
+
   mctrl.listOfItems = function(obj){
       var list = obj;
       return list;
   }
-  //gets the meetups from the DB and then stores them in localStorage
+
   mctrl.getMeetups = function () {
    return m.request({method:"GET", url:"/meetups"}).then(function(result){
     localStorage.setItem('meetups', JSON.stringify(result))
    })
   }
+
   mctrl.star = function (meetup) {
     console.log(meetup)
     mctrl.listOfMeetups[meetup.id-1].starred = true;
@@ -32,11 +38,12 @@ feed.controller = function () {
 }
 
 feed.view = function (ctrl) {
-  return m('div', [
+  return m('div.allStarred', [
     mctrl.listOfMeetups.map((function(meetup){
       return m('ul', [
-        m('li', [
-          m('div', meetup.id), m('div', meetup.event_name), m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
+        m('p', [
+          m('div', meetup.event_name), 
+          m('button', {class: 'unstarred'}, {onclick: function(){ console.log('hi')}})
         ])
       ])
     }))

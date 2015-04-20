@@ -27,7 +27,7 @@ starred.view = function(ctrl){
 
   return m('div.allStarred', [
     m('h4.mymeetups', 'My Meetups '),
-    m('div.queue', [ //div witht the class '.queue'
+    m('div.queue', [ 
       m("ul", [
         m("p", meetupList.map(function(meetup){
           return m('div.event', [
@@ -37,13 +37,11 @@ starred.view = function(ctrl){
             m('p', " Duration: "+meetup.event_duration)
             // m('p', " Description: "+meetup.event_description)
           ])
-            //goal: set up list items by time 
         })) 
       ]) 
     ])
   ])
 };
-
 
 //GOAL: add a dequeue button for users to remove meetups they no longer want to go to
 
