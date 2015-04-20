@@ -63,6 +63,11 @@ label {
   font: ;
 }
 
+.logout {
+  float: right;
+  margin-right: 15px;
+  color: white;
+}
 
 
 

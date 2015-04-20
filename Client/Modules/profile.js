@@ -6,6 +6,7 @@ starred.model = function(userObj){
 };
 
 starred.controller = function(){
+  if (Session.isLoggedIn === false) return m.route('/')
   ctrl = this;
   ctrl.meetupList; 
   var email = {email: JSON.parse(localStorage.getItem('session')).email};
