@@ -1,5 +1,6 @@
 var feed = {}
 
+//the feed model -- creates a model for a meetup
 
 feed.model = function (item) {
   this.id = item.id;
@@ -9,34 +10,26 @@ feed.model = function (item) {
 
 feed.controller = function () {
   mctrl = this;
-
-  if (Session.isLoggedIn === false){
-
-  }
-
+  //this is a candidate for deletion
   mctrl.listOfItems = function(obj){
       var list = obj;
       return list;
   }
-
   mctrl.getMeetups = function () {
    return m.request({method:"GET", url:"/feed"}).then(function(result){
-    localStorage.setItem('meetups', JSON.stringify(result))
+    localStorage.setItem('meetups', JSON.stringify(result));
    })
   }
-
   mctrl.star = function (meetup) {
-    console.log(meetup)
     mctrl.listOfMeetups[meetup.id-1].starred = true;
-    var email = JSON.parse(localStorage.getItem('session')).email
-    console.log(email)
+    var email = JSON.parse(localStorage.getItem('session')).email;
     var test = {meetup: meetup, email:email};
     return m.request({method:"POST", url:"/star", data:test}).then(function(result){
-      console.log(JSON.parse(JSON.stringify(result)))
+      console.log(JSON.parse(JSON.stringify(result)));
     })
   }
   mctrl.getMeetups();
-  mctrl.listOfMeetups = mctrl.listOfItems(JSON.parse(localStorage.getItem('meetups')))
+  mctrl.listOfMeetups = mctrl.listOfItems(JSON.parse(localStorage.getItem('meetups')));
 }
 
 feed.view = function (ctrl) {
